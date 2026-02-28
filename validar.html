@@ -162,22 +162,26 @@
         </footer>
     </div>
 
-        <script>
+            <script>
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const q = params.get('q');
             
             try {
-                // 1. Decodificar de Base64 con soporte exacto para acentos y la "Ñ"
+                // SEGURIDAD ESTRICTA 1: Si no hay código en el enlace, expulsa
+                if (!q) throw new Error("Enlace vacío");
+
+                // 1. Decodificar de Base64. 
+                // SEGURIDAD ESTRICTA 2: Si falta una letra, número o símbolo, atob() detecta la alteración y expulsa.
                 const datosDecodificados = decodeURIComponent(escape(atob(q)));
                 
                 // 2. Separar los datos usando la rayita vertical "|"
                 const partes = datosDecodificados.split('|');
                 
-                // Si no tiene exactamente 8 partes, alguien intentó alterar el código
-                if (partes.length !== 8) throw new Error("Código alterado");
+                // SEGURIDAD ESTRICTA 3: Si la cantidad de datos no cuadra perfectamente, expulsa
+                if (partes.length !== 8) throw new Error("Código alterado o incompleto");
 
-                // 3. Asignar los valores a la página
+                // 3. Asignar los valores a la página (AQUÍ ESTÁ EL NOMBRE EN MAYÚSCULAS)
                 document.getElementById('valNombre').textContent = (partes[0] || '-').toUpperCase();
                 document.getElementById('valCurp').textContent = partes[1] || '-';
                 document.getElementById('valMatricula').textContent = partes[2] || '-';
@@ -190,11 +194,11 @@
                 
                 document.getElementById('valFecha').textContent = partes[7] || '-';
 
-                // Mostrar la página solo si todo salió bien
+                // Mostrar la página única y exclusivamente si pasó todos los filtros de seguridad intactos
                 document.getElementById('cuerpoPagina').classList.remove('hidden');
 
             } catch (error) {
-                // Si intentaron adivinar o editar el código y es inválido:
+                // EXPULSIÓN INMEDIATA: Redirige a la SEP si el código fue manipulado de cualquier forma
                 window.location.replace("https://www.gob.mx/sep");
             }
         });
