@@ -162,44 +162,50 @@
         </footer>
     </div>
 
-            <script>
+                <script>
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
-            const q = params.get('q');
+            // 1. Obtenemos el código y arreglamos los símbolos '+' por si el navegador los borró al editar la URL
+            let q = params.get('q');
             
             try {
-                // SEGURIDAD ESTRICTA 1: Si no hay código en el enlace, expulsa
                 if (!q) throw new Error("Enlace vacío");
+                q = q.replace(/ /g, '+');
 
-                // 1. Decodificar de Base64. 
-                // SEGURIDAD ESTRICTA 2: Si falta una letra, número o símbolo, atob() detecta la alteración y expulsa.
+                // 2. Decodificamos el código
                 const datosDecodificados = decodeURIComponent(escape(atob(q)));
                 
-                // 2. Separar los datos usando la rayita vertical "|"
+                // 3. SEGURIDAD DE ESPEJO (ESTRICTA): Volvemos a codificar el resultado. 
+                // Si la persona borró o cambió una sola letra, la recodificación NO coincidirá con la URL original.
+                const verificacion = btoa(unescape(encodeURIComponent(datosDecodificados)));
+                if (q !== verificacion) {
+                    throw new Error("Código manipulado detectado");
+                }
+                
+                // 4. Separamos los datos
                 const partes = datosDecodificados.split('|');
                 
-                // SEGURIDAD ESTRICTA 3: Si la cantidad de datos no cuadra perfectamente, expulsa
-                if (partes.length !== 8) throw new Error("Código alterado o incompleto");
+                // 5. Verificamos que estén todos los datos completos
+                if (partes.length !== 8) throw new Error("Faltan datos en el código");
 
-                // 3. Asignar los valores a la página (AQUÍ ESTÁ EL NOMBRE EN MAYÚSCULAS)
+                // Asignamos los valores (Aquí va incluido tu Nombre en MAYÚSCULAS)
                 document.getElementById('valNombre').textContent = (partes[0] || '-').toUpperCase();
                 document.getElementById('valCurp').textContent = partes[1] || '-';
                 document.getElementById('valMatricula').textContent = partes[2] || '-';
                 document.getElementById('valFormacion').textContent = partes[3] || '-';
                 document.getElementById('valPromn').textContent = partes[4] || '-';
                 document.getElementById('valProml').textContent = partes[5] || '-';
-                
-                // Le volvemos a pegar el prefijo al folio que le habíamos quitado para ahorrar espacio
                 document.getElementById('valFolio').textContent = '6e2ecb41-886d-4966-b6b5-' + partes[6];
-                
                 document.getElementById('valFecha').textContent = partes[7] || '-';
 
-                // Mostrar la página única y exclusivamente si pasó todos los filtros de seguridad intactos
+                // Si superó todas las pruebas estrictas, mostramos la página
                 document.getElementById('cuerpoPagina').classList.remove('hidden');
 
             } catch (error) {
-                // EXPULSIÓN INMEDIATA: Redirige a la SEP si el código fue manipulado de cualquier forma
-                window.location.replace("https://www.gob.mx/sep");
+                // EXPULSIÓN INMEDIATA: Bloqueamos la vista entera y forzamos la redirección
+                document.body.style.display = 'none'; // Oculta todo para que no vean nada
+                window.location.replace("https://www.gob.mx/sep"); // Redirige sin dejar historial
+                window.location.href = "https://www.gob.mx/sep"; // Respaldo por si falla el replace
             }
         });
     </script>
