@@ -178,7 +178,7 @@
                 if (partes.length !== 8) throw new Error("Código alterado");
 
                 // 3. Asignar los valores a la página
-                document.getElementById('valNombre').textContent = partes[0] || '-';
+                document.getElementById('valNombre').textContent = (partes[0] || '-').toUpperCase();
                 document.getElementById('valCurp').textContent = partes[1] || '-';
                 document.getElementById('valMatricula').textContent = partes[2] || '-';
                 document.getElementById('valFormacion').textContent = partes[3] || '-';
