@@ -56,24 +56,22 @@
         </div>
 
         <div class="relative w-full z-40">
-            <div id="franja-estirable" class="bg-[#3A0B1E] w-full shadow-md overflow-hidden transition-all duration-500 ease-in-out max-h-14 relative z-10 flex flex-col">
-                
-                <div class="h-14 w-full flex items-center justify-end pr-6 flex-shrink-0">
-                    <button onclick="const franja = document.getElementById('franja-estirable'); franja.classList.toggle('max-h-14'); franja.classList.toggle('max-h-96');" class="text-white hover:text-gray-300 focus:outline-none">
-                        <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+            <div id="franja-oscura" class="bg-[#3A0B1E] h-14 w-full shadow-md flex items-center justify-end pr-6 relative z-10">
+                <button onclick="const m2 = document.getElementById('menu-desplegable-2'); m2.classList.toggle('max-h-0'); m2.classList.toggle('max-h-96');" class="text-white hover:text-gray-300 focus:outline-none">
+                    <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
 
-                <div class="w-full flex flex-col items-center pt-2 pb-4 space-y-3 text-white">
+            <div id="menu-desplegable-2" class="absolute top-full left-0 w-full bg-[#3A0B1E] overflow-hidden transition-all duration-500 ease-in-out max-h-0 shadow-2xl">
+                <div class="w-full flex flex-col items-center py-3 space-y-3 text-white">
                     <a href="https://www.gob.mx/sep/archivo/prensa" class="text-base hover:text-[#d4c19c] font-normal tracking-wide">Boletín de prensa</a>
                     <a href="https://www.sep.gob.mx/es/sep1/sep1_La_Educacion_y_sus_Normas_Juridicas" class="text-base hover:text-[#d4c19c] font-normal tracking-wide">Normas jurídicas</a>
                     <a href="https://sep.gob.mx/es/sep1/Proteccion_de_datos_personales" class="text-base hover:text-[#d4c19c] font-normal tracking-wide">Protección de datos personales</a>
                     <a href="https://sep.gob.mx/es/sep1/transparencia_rendicion" class="text-base hover:text-[#d4c19c] font-normal tracking-wide">Transparencia</a>
                     <a href="https://www.gob.mx/sep/#6115" class="text-base hover:text-[#d4c19c] font-normal tracking-wide">Contacto</a>
                 </div>
-                
             </div>
         </div>
 
