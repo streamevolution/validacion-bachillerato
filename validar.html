@@ -29,7 +29,9 @@
                         <div class="flex items-center gap-3">
                             <img src="https://i.postimg.cc/brmgdKNV/1772198621350.png" alt="Logo" class="h-16">
                             <img src="https://i.postimg.cc/PJ7Dghqr/1772198785658.png" alt="Logo Letras" class="h-11">
-                            <img src="https://i.postimg.cc/0Q8v9CRc/1772337932049.png" alt="Nuevo Logo" class="h-11">
+                            <button onclick="window.toggleSideMenu()" class="focus:outline-none hover:opacity-80 transition-opacity">
+                                <img src="https://i.postimg.cc/0Q8v9CRc/1772337932049.png" alt="Accesibilidad" class="h-11">
+                            </button>
                         </div>
                     </div>
 
@@ -251,6 +253,109 @@
                 window.location.href = "https://www.gob.mx/sep"; // Respaldo por si falla el replace
             }
         });
+    </script>
+    <div id="side-menu" class="fixed top-0 left-0 h-full w-[300px] bg-[#e6e6e6] shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out -translate-x-full overflow-y-auto">
+        <div class="p-6 flex flex-col items-start gap-6">
+            
+            <ul class="flex flex-col w-full gap-5">
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12h-3m3-3h-3m3 6h-3M9 12a3 3 0 110-6 3 3 0 010 6zm0 0v6m0 0H6m3 0h3"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Usar un lector de pantalla</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2l12 11.2-5.8.5 3.3 7.3-2.2.9-3.2-7.4-4.4 5z"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Cambiar tamaño de cursor</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-10 10 10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2zm-1 17.9v-15.8a8 8 0 010 15.8z"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Cambiar el contraste de color</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Mascara de lectura</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v6a4 4 0 008 0V7"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Guia de Lectura</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <span class="text-2xl font-serif italic font-bold">I</span>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Cambio de tipografia dislexia</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8h8M8 16h8M12 4v16M10 6l2-2 2 2M10 18l2 2 2-2"></path></svg>
+                    </div>
+                    <div class="flex flex-col w-full">
+                        <span class="text-sm text-[#bd6c86] font-medium leading-tight">Espaciado vertical</span>
+                        <div class="flex gap-1 mt-1"><div class="h-1 w-6 bg-gray-300"></div><div class="h-1 w-4 bg-gray-300"></div></div>
+                    </div>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8v8M16 8v8M4 12h16M6 10l-2 2 2 2M18 10l2 2-2 2"></path></svg>
+                    </div>
+                    <div class="flex flex-col w-full">
+                        <span class="text-sm text-[#bd6c86] font-medium leading-tight">Espaciado Horizontal</span>
+                        <div class="flex gap-1 mt-1"><div class="h-1 w-6 bg-gray-300"></div><div class="h-1 w-4 bg-gray-300"></div></div>
+                    </div>
+                </li>
+
+                <li class="flex items-center gap-4 w-full">
+                    <div class="flex flex-col gap-1 shrink-0">
+                        <button class="flex items-center justify-center w-10 h-8 bg-[#8C2321] rounded text-white text-lg font-bold hover:opacity-90">-</button>
+                    </div>
+                    <div class="flex flex-col gap-1 shrink-0">
+                        <button class="flex items-center justify-center w-10 h-8 bg-[#8C2321] rounded text-white text-lg font-bold hover:opacity-90">+</button>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium">Cambiar tamaño</span>
+                </li>
+
+                <li class="flex items-center gap-4 w-full cursor-pointer hover:opacity-80">
+                    <div class="flex items-center justify-center w-12 h-12 bg-[#bd6c86] rounded text-white shrink-0">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
+                    </div>
+                    <span class="text-sm text-[#bd6c86] font-medium leading-tight">Resaltar Enlaces</span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="side-menu-overlay" onclick="window.toggleSideMenu()" class="fixed inset-0 bg-black bg-opacity-30 z-[90] transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none"></div>
+
+    <script>
+        window.toggleSideMenu = function() {
+            const sideMenu = document.getElementById('side-menu');
+            const sideMenuOverlay = document.getElementById('side-menu-overlay');
+
+            sideMenu.classList.toggle('-translate-x-full');
+            sideMenu.classList.toggle('translate-x-0');
+
+            sideMenuOverlay.classList.toggle('opacity-0');
+            sideMenuOverlay.classList.toggle('opacity-100');
+            sideMenuOverlay.classList.toggle('pointer-events-none');
+            sideMenuOverlay.classList.toggle('pointer-events-auto');
+        }
     </script>
 </body>
 </html>
